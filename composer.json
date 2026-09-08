@@ -1,0 +1,12 @@
+{
+    "name": "classroom-star/app",
+    "description": "Classroom Star — Participation Gamification Web App",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "phpoffice/phpspreadsheet": "^2.0"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

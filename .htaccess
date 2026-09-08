@@ -1,0 +1,25 @@
+# ============================================================
+# Classroom Star — Root .htaccess
+# Perlindungan folder internal & fallback routing ke /public/
+# ============================================================
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 1. Blokir akses langsung ke folder sensitif
+    RewriteRule ^(app|database|vendor)(\/|$) - [F,L,NC]
+    RewriteRule ^composer\.(json|lock)$ - [F,L,NC]
+
+    # 2. Jika request belum menuju folder public, redirect internal ke public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# 3. Blokir akses ke file konfigurasi dan data mentah
+<FilesMatch "\.(sql|log|env|ini|sh|json|lock|md)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

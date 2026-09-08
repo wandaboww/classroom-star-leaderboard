@@ -1,0 +1,27 @@
+# Dependencies
+/vendor/
+
+# Environment & secrets
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+/tmp/
+/cache/
+
+# Database backups
+database/backups/
+*_backup.sql
+*_backup*.sql
