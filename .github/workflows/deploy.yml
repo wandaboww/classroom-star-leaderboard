@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Prepare SSH key
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s' "${{ secrets.HOSTINGER_SSH_KEY }}" | sed 's/\\n/\n/g' > ~/.ssh/hostinger_key
-          chmod 600 ~/.ssh/hostinger_key
-
       - name: Deploy to Hostinger
         uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USER }}
-          key_path: ~/.ssh/hostinger_key
-          script: ~/deploy-wandastar.sh
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          script: |
+            ~/deploy-wandastar.sh
