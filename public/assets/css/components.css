@@ -891,6 +891,50 @@ select.form-control option { background: var(--clr-bg-tertiary); }
     transform: translateY(-2px);
 }
 
+/* ── Responsive Mobile Horizontal Scroll (Side Scroll) for Podium ── */
+@media (max-width: 768px) {
+    .podium-container {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        justify-content: flex-start !important;
+        align-items: stretch;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding: var(--space-4) var(--space-4) var(--space-6) !important;
+        scroll-padding: 0 var(--space-4);
+        border-radius: var(--radius-lg);
+        scroll-behavior: smooth;
+    }
+
+    /* Custom elegant scrollbar for mobile */
+    .podium-container::-webkit-scrollbar {
+        height: 6px;
+    }
+    .podium-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 9999px;
+        margin: 0 16px;
+    }
+    .podium-container::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, rgba(255, 215, 0, 0.4), rgba(255, 215, 0, 0.7));
+        border-radius: 9999px;
+    }
+
+    .podium-card {
+        flex: 0 0 240px !important;
+        min-width: 240px !important;
+        max-width: 240px !important;
+        scroll-snap-align: start;
+        padding: 24px 16px 20px;
+    }
+
+    .podium-card:hover {
+        transform: none !important;
+    }
+}
+
 /* -- My Rank Highlight Animation (Student Leaderboard) -- */
 @keyframes myRankPulse {
     0% {
